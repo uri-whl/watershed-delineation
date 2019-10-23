@@ -1,6 +1,6 @@
-# Project Template Repository
+# URI Watershed Watch Delineation
 
-Uses the directory structure suggested in Wilson (2017). Fork and edit at will!
+Broadly, this repository contains a guide, python code and ArcGIS tools for delineating watersheds with an optional stream burn-in.
 
 # Reference
 
