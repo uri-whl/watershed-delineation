@@ -29,23 +29,23 @@ This is the method used to delineate sub-watersheds for Watershed Watch sampling
     c. Using `Raster Calculator` from the `Spatial Analyst` toolbox, subtract the stream raster from the DEM. Use the output in the next phase of delineation.
 
 4. Follow the instructions in (Parmenter & Melcher, 2012) or (MaDGIC, 2014). They are reproduced here in brief, but more data is contained within the original article. These tools are located in the `Spatial Analyst` > `Hydrology` toolbox.
-    a. Fill DEM using the `Fill` tool to remove any depressions / sinks (cells that do not drain)
+    1. Fill DEM using the `Fill` tool to remove any depressions / sinks (cells that do not drain)
 
-    b. Create a flow direction grid / raster using the `Flow Direction` tool. Each cell references another cell to establish direction of flow - there's little point in visualizing this.
+    2. Create a flow direction grid / raster using the `Flow Direction` tool. Each cell references another cell to establish direction of flow - there's little point in visualizing this.
 
-    c. Create a flow accumulation grid / raster the `Flow Accumulation` tool. Each cell will now contain the number of cells which flow into it.
+    3. Create a flow accumulation grid / raster the `Flow Accumulation` tool. Each cell will now contain the number of cells which flow into it.
 
-    d. Change the symbology on the flow accumulation grid to have two classes - those above a certain number _N_ and those below. The goal is to contrast between those cells which have high flow accumulation and those that don't. You will need to experimentally determine the best _N_ for your purposes. We recommend trying a value of 2000 to start, symbolizing any cell with a number greater than 2000 as white, and everything else as black. When finished, you'll see the major flow lines through the watershed - they should line up approximately with known major rivers.
+    4. Change the symbology on the flow accumulation grid to have two classes - those above a certain number _N_ and those below. The goal is to contrast between those cells which have high flow accumulation and those that don't. You will need to experimentally determine the best _N_ for your purposes. We recommend trying a value of 2000 to start, symbolizing any cell with a number greater than 2000 as white, and everything else as black. When finished, you'll see the major flow lines through the watershed - they should line up approximately with known major rivers.
 
-    e. You may need to edit the outlet point so that it sits on top of the closest high flow accumulation line. If you do, simply edit the point and align it with the flow line. Your goal is to place them at approximately the watershed outlet as dictated by the flow lines.
+    5. You may need to edit the outlet point so that it sits on top of the closest high flow accumulation line. If you do, simply edit the point and align it with the flow line. Your goal is to place them at approximately the watershed outlet as dictated by the flow lines.
 
-    f. Use the `Snap Pour Point` tool to align the pour point _definitively_ to the highest flow accumulation point in a certain radius, as well as create a raster dataset containing the pour points.
+    6. Use the `Snap Pour Point` tool to align the pour point _definitively_ to the highest flow accumulation point in a certain radius, as well as create a raster dataset containing the pour points.
 
-    f. Finally, create the watershed using the `Watershed` tool and your pour points and flow direction raster. You now have a raster of the delineated watersheds.
+    7. Finally, create the watershed using the `Watershed` tool and your pour points and flow direction raster. You now have a raster of the delineated watersheds.
 
-    g. Convert watershed from raster to vector.
+    8. Convert watershed from raster to vector.
 
-    h. Convert watershed to final desired projection.
+    9. Convert watershed to final desired projection.
 
 5. Do a final review of the watershed and fix any big errors - this is critical! The delineation process is not perfect and there is almost always something not right in the delineated boundary. Because it is based on the DEM, it does not account for large amounts of impervious cover or hydrography. Display the stream network and contour lines on top of the watershed at the end to make sure that it makes sense. If a stream is cut in half, you should adjust the boundary of the watershed to encompass the entire stream by following the contour lines.
 
