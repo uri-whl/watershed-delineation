@@ -29,7 +29,6 @@ This is the method used to delineate sub-watersheds for Watershed Watch sampling
     c. Using `Raster Calculator` from the `Spatial Analyst` toolbox, subtract the stream raster from the DEM. Use the output in the next phase of delineation.
 
 4. Follow the instructions in (Parmenter & Melcher, 2012) or (MaDGIC, 2014). They are reproduced here in brief, but more data is contained within the original article. These tools are located in the `Spatial Analyst` > `Hydrology` toolbox.
-
     a. Fill DEM using the `Fill` tool to remove any depressions / sinks (cells that do not drain)
 
     b. Create a flow direction grid / raster using the `Flow Direction` tool. Each cell references another cell to establish direction of flow - there's little point in visualizing this.
