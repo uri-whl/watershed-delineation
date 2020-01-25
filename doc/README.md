@@ -21,12 +21,11 @@ This is the method used to delineate sub-watersheds for Watershed Watch sampling
 2. Convert DEM, outlet feature class and stream feature class to the same projection. It is suggested to match the units of the coordinate system with the units of elevation in the DEM for watershed delineation. The elevation values of the USGS DEM are in meters, and the units for UTM coordinate system are also in meters - for this reason, and that RI is completely contained with UTM Zone 19, using the UTM Zone 19 projected coordinate system is logical.
 
 3. Perform a hydrography _burn-in_ of the DEM with the stream network (see Tarboton, 2012 for a more complete approach; the method described here is simpler). This will lessen the potential for error due to culverts and other under-the-road water connections that will affect the watershed delineation.
+    1. Convert the stream network to a raster using the `Polyline to Raster` tool of the `Conversion` toolbox. Specify the cell size as being that of the DEM raster; use any field for value as we'll reclass it shortly.
 
-    a. Convert the stream network to a raster using the `Polyline to Raster` tool of the `Conversion` toolbox. Specify the cell size as being that of the DEM raster; use any field for value as we'll reclass it shortly.
+    2. Reclassify the raster values using the `Reclassify` tool from the `Spatial Analyst` toolbox, setting any _actual_ value to the same constant number and `NoData` to 0. Whatever value you choose for a constant is how much the DEM will be lowered by for cells that overlap the stream raster. Think of it as carving a channel into the DEM so that culverts or other features not observed in a DEM are recognized as connections for a watershed. If you've followed the steps exactly, a good number is in the range of (5, 10) as the vertical unit is meters.
 
-    b. Reclassify the raster values using the `Reclassify` tool from the `Spatial Analyst` toolbox, setting any _actual_ value to the same constant number and `NoData` to 0. Whatever value you choose for a constant is how much the DEM will be lowered by for cells that overlap the stream raster. Think of it as carving a channel into the DEM so that culverts or other features not observed in a DEM are recognized as connections for a watershed. If you've followed the steps exactly, a good number is in the range of (5, 10) as the vertical unit is meters.
-
-    c. Using `Raster Calculator` from the `Spatial Analyst` toolbox, subtract the stream raster from the DEM. Use the output in the next phase of delineation.
+    3. Using `Raster Calculator` from the `Spatial Analyst` toolbox, subtract the stream raster from the DEM. Use the output in the next phase of delineation.
 
 4. Follow the instructions in (Parmenter & Melcher, 2012) or (MaDGIC, 2014). They are reproduced here in brief, but more data is contained within the original article. These tools are located in the `Spatial Analyst` > `Hydrology` toolbox.
     1. Fill DEM using the `Fill` tool to remove any depressions / sinks (cells that do not drain)
