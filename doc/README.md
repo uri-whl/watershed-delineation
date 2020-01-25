@@ -54,9 +54,7 @@ This is the method used to delineate sub-watersheds for Watershed Watch sampling
 
 The above process has been scripted and can be run directly from the command line or an IDE such as PyCharm, Spyder or VS Code. For simplicity, it's imperative that you use the binary that comes with your ArcGIS installation, otherwise you will need to go through the difficulty of loading that `arcpy` module into a different binary - doable, but not easy. For explanation on how to do to the complicated `arcpy` loading in a different binary, see [this USGS article that describes how to combine (Ana)conda and `arcpy`](https://my.usgs.gov/confluence/display/EGIS/Using+Anaconda+modules+from+the+ESRI+python+environment).
 
-Alternative, just use the scripts within `..\src` and run them with the provided binary.
-
-The delineation process can be automated for many given points at one time using the script I wrote in Python located in Seaver’s folder, `S:\Gold_Lab\Seaver\Watershed Watch Data\Delineation Files\Python Scripts`. The process of snapping the outlet point to a flow accumulation must still be done manually. This script can delineate many  watersheds at once and convert them to shapefiles in a matter of minutes rather than going through the whole process in ArcGIS. The script has instructions on lines that need to be changed and is quite simple. Make sure the Project Interpreter is set to Python 2.7 before running the code.
+The delineation process can be automated for many given points at one time using the script I wrote in Python located in Seaver’s folder, `S:\Gold_Lab\Seaver\Watershed Watch Data\Delineation Files\Python Scripts`. The process of snapping the outlet point to a flow accumulation must still be done manually. This script can delineate many  watersheds at once and convert them to shapefiles in a matter of minutes rather than going through the whole process in ArcGIS. The script has instructions on lines that need to be changed and is quite simple.
 
 ## Specific Notes for RI
 
