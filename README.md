@@ -11,4 +11,12 @@ This repository contains a method guide and python code for delineating watershe
 
 ## Requirements
 
-You'll need `arcpy`, either 2.x or 3.x. It's recommended that you run this script against the python binary included with ArcGIS.
+You'll need the `arcpy` that ships with ArcGIS. It's recommended that you run this script against the python binary included with ArcGIS - otherwise you have to jump through hoops. See [the instructional doc](doc/README.me) for more information.
+
+Additionally, to use the script in its current form, you'll need a small helper libray, [extarc](https://github.com/joshpsawyer/extarc). From the python terminal, type:
+
+```bash
+pip install --editable=git+https://github.com/joshpsawyer/extarc.git#egg=extarc
+```
+
+to download the latest stable version from github. Eventually, this will make its way into PyPI and can be installed with pip or conda in normal fashion.
