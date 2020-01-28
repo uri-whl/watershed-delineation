@@ -8,7 +8,7 @@ This repository contains a method guide and python code for delineating watershe
 
 - `doc` contains [manual instructions, script usage information and caveats](doc/README.md).
 - `src` contains a standalone script for use with `arcpy`
-- `data` contains a small sample dataset to run the scripts with.
+- `data` contains a small sample dataset to run the scripts with. The AOI is the Indian Lake watershed - included is the pour point, clipped NHD flowline and clipped DEM.
 
 ## Requirements
 

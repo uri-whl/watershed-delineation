@@ -124,4 +124,4 @@ if __name__ == "__main__":
     ea.logger.send("processing of part 01 is complete")
     ea.logger.send("please inspect your pour points against the flow accumulation grid")
     ea.logger.send("when ready, read and then run '02_delineate_watersheds.py'")
-    ea.logger.send("you'll need paths to your pour points and your accmulation grid")
+    ea.logger.send("you'll need paths to your pour points and your direction grid")
