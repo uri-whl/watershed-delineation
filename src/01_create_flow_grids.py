@@ -90,10 +90,10 @@ if __name__ == "__main__":
     
     dem_b = str(here('./results/dem_burned.tif', warn=False))
     
-    arcpy.RasterCalculator_ia(
-        expression=" "%dem_clipped%"- "%nhd_flowline_rc%"",
-        output_raster=dem_b
-    )
+    
+    in_mem = arcpy.Raster(dem_clipped) - arcpy.Raster(nhd_flowline_rc)
+    
+    in_mem.save(dem_b)
 
     
     # now start working through watershed creation
@@ -101,11 +101,24 @@ if __name__ == "__main__":
     # fill dem using
     ea.logger.send("filling dem")
 
-    # create a flow direction grid
-    ea.logger.send("your flow direction grid is located at: ")
-    
-    # create a flow accumulation grid
-    ea.logger.send("your flow accumulation grid is located at: ")
+    dem_filled = str(here('./results/dem_filled.tif', warn=False))
+
+    dem_f = arcpy.sa.Fill(dem_b)
+    dem_f.save(dem_filled)
+
+    # Process: Flow Direction
+    dem_fd = str(here('./results/dem_fdirection.tif', warn=False))
+    dem_fd_obj = arcpy.sa.FlowDirection(dem_filled)
+    dem_fd_obj.save(dem_fd)
+
+    ea.logger.send("your flow direction grid is located at: {}".format(dem_fd))
+
+    # Process: Flow Accumulation
+    dem_fa =  str(here('./results/dem_faccumulation.tif', warn=False))
+    dem_fa_obj = arcpy.sa.FlowAccumulation(dem_fd)
+    dem_fa_obj.save(dem_fa)
+
+    ea.logger.send("your flow accumulation grid is located at: {}".format(dem_fa))
 
 
     ea.logger.send("processing of part 01 is complete")
